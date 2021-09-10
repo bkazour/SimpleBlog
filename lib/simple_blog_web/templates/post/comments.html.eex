@@ -1,0 +1,73 @@
+<div class="container-fluid mt-100">
+<%= for comment <- @comments do %>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="media flex-wrap w-100 align-items-center">
+                        <div class="media-body ml-3">
+                            <a href="javascript:void(0)" data-abc="true"><%= comment.name %></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <%= comment.content%>
+                        <ul class="emojis">
+                            <li class="mr-2"><%=
+                            link to: Routes.post_post_path(@conn, :add_reaction, comment.post_id, reaction_id: 0, comment_id: comment.id), method: :add_reaction do
+                                img_tag("https://i.imgur.com/VZy5vik.png")
+                            end
+                            %></li>
+                            <li class="mr-2"><%=
+                            link to: Routes.post_post_path(@conn, :add_reaction, comment.post_id, reaction_id: 1, comment_id: comment.id), method: :add_reaction do
+                                img_tag("https://i.imgur.com/AIrm2Yu.png")
+                            end
+                            %></li>
+                            <li class="mr-2"><%=
+                            link to: Routes.post_post_path(@conn, :add_reaction, comment.post_id, reaction_id: 2, comment_id: comment.id), method: :add_reaction do
+                                img_tag("https://i.imgur.com/v8pgJxy.png")
+                            end
+                            %></li>
+                            <li class="mr-2"><%=
+                            link to: Routes.post_post_path(@conn, :add_reaction, comment.post_id, reaction_id: 3, comment_id: comment.id), method: :add_reaction do
+                                img_tag("https://i.imgur.com/lWLKSZO.png")
+                            end
+                            %></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
+                    <div class="px-4 pt-3">
+                        <span class="align-middle"><%=
+                            link to: Routes.post_post_path(@conn, :delete_reaction, comment.post_id, reaction_id: 0, comment_id: comment.id), method: :delete do
+                                img_tag("https://i.imgur.com/VZy5vik.png", class: "emojisIcon")
+                            end
+                            %></span> <span class="align-middle"><%= get_reaction_count(comment.id, "0") %></span>
+                            <span class="align-middle"><%=
+                            link to: Routes.post_post_path(@conn, :delete_reaction, comment.post_id, reaction_id: 1, comment_id: comment.id), method: :delete do
+                                img_tag("https://i.imgur.com/AIrm2Yu.png", class: "emojisIcon")
+                            end
+                            %></span> <span class="align-middle"><%= get_reaction_count(comment.id, "1") %></span>
+                            <span class="align-middle"><%=
+                            link to: Routes.post_post_path(@conn, :delete_reaction, comment.post_id, reaction_id: 2, comment_id: comment.id), method: :delete do
+                                img_tag("https://i.imgur.com/v8pgJxy.png", class: "emojisIcon")
+                            end
+                            %></span> <span class="align-middle"><%= get_reaction_count(comment.id, "2") %></span>
+                            <span class="align-middle"><%=
+                            link to: Routes.post_post_path(@conn, :delete_reaction, comment.post_id, reaction_id: 3, comment_id: comment.id), method: :delete do
+                                img_tag("https://i.imgur.com/lWLKSZO.png", class: "emojisIcon")
+                            end
+                            %></span> <span class="align-middle"><%= get_reaction_count(comment.id, "3") %></span>
+
+                    </div>
+                    <div class="px-4 pt-3">
+                        <%= link "Edit", to: Routes.post_post_path(@conn, :load_comment, comment.post_id, comment_id: comment.id), method: :post, class: "btn btn-primary" %>
+                        <%= link "Delete", to: Routes.post_post_path(@conn, :delete_comment, comment.post_id, comment_id: comment.id), method: :delete, data: [confirm: "Are you sure?"] %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>

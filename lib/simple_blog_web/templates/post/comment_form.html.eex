@@ -1,0 +1,28 @@
+<%= form_for @changeset, @action, fn f -> %>
+	<%= if (@comment == nil) do %>
+		<div class="form-group">
+			<label>Name</label>
+			<%= text_input f, :name, class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<label>Content</label>
+			<%= textarea f, :content, class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= submit "Add comment", class: "btn btn-primary" %>
+		</div>
+	<% else %>
+		<div class="form-group">
+			<label>Name</label>
+			<%= text_input f, :name, value: @comment.name, class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<label>Content</label>
+			<%= textarea f, :content, value: @comment.content, class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<span><%= submit "Update comment", class: "btn btn-primary" %>
+			<span><%= link "Cancel and return", to: Routes.post_path(@conn, :show, @post), class: "btn btn-primary" %></span>
+		</div>
+	<% end %>
+<% end %>
