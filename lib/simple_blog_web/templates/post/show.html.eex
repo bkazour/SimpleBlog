@@ -14,7 +14,7 @@
 
 </ul>
 
-<%= render "comments.html", conn: @conn, post: @post.post, comments: @post.post.comments %>
+
 <%=
   if(@post.comment == nil) do
     render "comment_form.html", conn: @conn, post: @post.post, comment: @post.comment, changeset: @changeset, action: Routes.post_post_path(@conn, :add_comment, @post.post)
@@ -22,6 +22,7 @@
     render "comment_form.html", conn: @conn, post: @post.post, comment: @post.comment, changeset: @changeset, action: Routes.post_post_path(@conn, :update_comment, @post.post, comment_id: @post.comment.id)
   end
 %>
+<%= render "comments.html", conn: @conn, post: @post.post, comments: @post.post.comments %>
 
 <span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post.post) %></span>
 <span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>

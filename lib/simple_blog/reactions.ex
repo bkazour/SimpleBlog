@@ -102,11 +102,19 @@ defmodule SimpleBlog.Reactions do
     Reaction.changeset(reaction, attrs)
   end
 
+  ################################################################################
+  ### Get 1 reaction of a specific type for a specified comment
+
+  ################################################################################
   def get_one_reaction(comment_id, reaction_id) do
     query = from(r in Reaction, where: r.type == ^reaction_id and r.comment_id == ^comment_id, limit: 1)
     Repo.one(query)
   end
 
+  ################################################################################
+  ### Get all reactions for a specific comment
+
+  ################################################################################
   def get_all_reactions(comment_id) do
     query = from(r in Reaction, where: r.comment_id == ^comment_id)
     Repo.all(query)

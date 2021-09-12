@@ -15,22 +15,22 @@
                         <%= comment.content%>
                         <ul class="emojis">
                             <li class="mr-2"><%=
-                            link to: Routes.post_post_path(@conn, :add_reaction, comment.post_id, reaction_id: 0, comment_id: comment.id), method: :add_reaction do
+                            link to: Routes.post_post_path(@conn, :add_reaction, comment.post_id, reaction_id: 0, comment_id: comment.id), method: :post do
                                 img_tag("https://i.imgur.com/VZy5vik.png")
                             end
                             %></li>
                             <li class="mr-2"><%=
-                            link to: Routes.post_post_path(@conn, :add_reaction, comment.post_id, reaction_id: 1, comment_id: comment.id), method: :add_reaction do
+                            link to: Routes.post_post_path(@conn, :add_reaction, comment.post_id, reaction_id: 1, comment_id: comment.id), method: :post do
                                 img_tag("https://i.imgur.com/AIrm2Yu.png")
                             end
                             %></li>
                             <li class="mr-2"><%=
-                            link to: Routes.post_post_path(@conn, :add_reaction, comment.post_id, reaction_id: 2, comment_id: comment.id), method: :add_reaction do
+                            link to: Routes.post_post_path(@conn, :add_reaction, comment.post_id, reaction_id: 2, comment_id: comment.id), method: :post do
                                 img_tag("https://i.imgur.com/v8pgJxy.png")
                             end
                             %></li>
                             <li class="mr-2"><%=
-                            link to: Routes.post_post_path(@conn, :add_reaction, comment.post_id, reaction_id: 3, comment_id: comment.id), method: :add_reaction do
+                            link to: Routes.post_post_path(@conn, :add_reaction, comment.post_id, reaction_id: 3, comment_id: comment.id), method: :post do
                                 img_tag("https://i.imgur.com/lWLKSZO.png")
                             end
                             %></li>
